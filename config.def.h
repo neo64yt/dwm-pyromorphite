@@ -11,8 +11,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fantasque Sans Mono:size=12",
-                                        "Material Design Icons:size=12",
-                                        "Symbols Nerd Font 2048-em:size=12" };
+                                        "Material Design Icons:size=13",
+                                        "Symbols Nerd Font 2048-em:size=13" };
 static const char col_black[]       = "#1f1f1f";
 static const char col_white[]       = "#ffffff";
 static const char col_green[]       = "#056d0e";
@@ -29,7 +29,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 ", " 󰎸 ", " 󰎻 ", " 󰎾 " };
+static const char *tags[] = { "󰎦", "󰎩", "󰎬", "󰎮", "󰎰", "󰎵", "󰎸", "󰎻", "󰎾" };
 static const char *tagsalt[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]" };
 
 static const Rule rules[] = {
