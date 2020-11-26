@@ -13,6 +13,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * gridmode
 * nodmenu
 * resizecorners
+* systray
 
 ## Installation guide
 
@@ -36,6 +37,8 @@ You may want to install these applications to work with dwm:
 * nm-applet (for network management)
 * pa-applet (for simple volume settings)
 * mate-polkit/polkit-gnome (for running apps which need administrative permissions)
+* ttf-material-design-icons-extended (showing icons)
+* ttf-fantasque-sans-mono (default font for my build)
 
 ### 4. Running dwm at startup
 Create a folder named .dwm inside your home directory. Inside the folder, write these two files:
