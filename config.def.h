@@ -9,22 +9,22 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char statussep         = '~';      /* separator between status bars */
+static const char statussep         = ';';      /* separator between status bars */
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fantasque Sans Mono:size=12",
                                         "Material Design Icons:size=13" };
 static const char col_bg[]          = "#107050";
 static const char col_font[]        = "#c7f6ec";
-static const char col_bgsel[]       = "#02231c";
-static const char col_fontsel[]     = "#4dd8ad"; 
+static const char col_sel1[]      = "#55d9c0";
+static const char col_sel2[]      = "#02231c";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_font, col_bg, col_bg },
-	[SchemeSel]  = { col_font, col_bgsel, col_bgsel  },
+	[SchemeSel]  = { col_font, col_sel2, col_sel2  },
 	[SchemeStatus]  = { col_font, col_bg,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_bgsel, col_fontsel,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_bg, col_sel2,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
 	[SchemeTagsNorm]  = { col_font, col_bg,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_fontsel, col_bgsel,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_sel1, col_sel2,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
 	[SchemeInfoNorm]  = { col_font, col_bg,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
