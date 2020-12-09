@@ -13,7 +13,7 @@ static const char statussep         = ';';      /* separator between status bars
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fantasque Sans Mono:size=12",
                                         "Material Design Icons:size=13" };
-static const char col_bg[]          = "#1f1f1f";
+static const char col_bg[]          = "#000000";
 static const char col_font[]        = "#c7f6ec";
 static const char col_sel1[]        = "#55d9c0";
 static const char col_sel2[]        = "#02231c";
