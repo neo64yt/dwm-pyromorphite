@@ -14,11 +14,18 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * nodmenu
 * resizecorners
 * systray
+### Important parts of my dwm build 
+Make sure you don't accidentally delete these files to make it run properly:
+
+* /usr/local/bin/dwm (binary file)
+* /usr/local/bin/dwm-session (shell script for detecting autostart file)
+* /usr/share/xsessions/dwm.desktop (desktop entry)
+* $HOME/.dwm/autostart.sh (autostart file)
 
 ## Installation guide
 
 ### 1. Cloning this repository
-Open your desired directory in a terminal window and run this:
+Run this command:
 ```
 git clone https://github.com/neo64yt/dwm-neo64.git
 ```
@@ -40,35 +47,22 @@ You may want to install these applications to work with dwm:
 * ttf-material-design-icons-extended (showing icons)
 * ttf-fantasque-sans-mono (default font for my build)
 
-### 4. Running dwm at startup
-Create a folder named .dwm inside your home directory. Inside the folder, write these two files:
-* dwm-start
-``` 
-#!/bin/sh
-/home/user/.dwm/autostart.sh
-exec dwm
-```
-* autostart.sh
-Just put your startup apps into this file according to this format:
+### 4. Running dwm at startup & autostart applications
+Autostart applications must be put into "$HOME/.dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
+
+This is a sample of autostart.sh:
 ```
 #!/bin/sh
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-sxhkd -c ~/.dwm/sxhkdrc &
+sxhkd -c $HOME/.dwm/sxhkdrc &
 # This example script starts mate-polkit and sxhkd with a custom config file
 ```
 
 #### With display manager
-Paste this to /usr/share/xsessions/dwm.desktop in superuser mode:
-```
-[Desktop Entry]
-Encoding=UTF-8
-Name=Dynamic Window Manager
-Exec=/home/user/.dwm/dwm-start
-```
-Make sure you change the user with your own username.
+A desktop entry file for dwm will be automatically installed to "/usr/share/xsessions/".
 
 #### Without display manager
-Put "exec ~/.dwm/dwm-start" into your .xinitrc file which is located in your home directory. To run dwm, run startx after you logged into the TTY prompt.
+Put "exec /usr/local/bin/dwm-session" into your .xinitrc file.
 
 ## Customizing dwm
 dwm is customizable by editing the source code (mainly config.def.h) and patching. To apply a patch, go to this build directory and execute:
