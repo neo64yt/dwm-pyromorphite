@@ -13,18 +13,18 @@ static const char statussep         = ';';      /* separator between status bars
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fantasque Sans Mono:size=12",
                                         "Material Design Icons:size=13" };
-static const char col_bg[]          = "#000000";
-static const char col_font[]        = "#c7f6ec";
-static const char col_sel1[]        = "#55d9c0";
-static const char col_sel2[]        = "#02231c";
+static const char col_bg[]          = "#272a34";
+static const char col_font[]        = "#ffffff";
+static const char col_fontsel[]     = "#333333";
+static const char col_sel[]         = "#06a284";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_font, col_bg, col_bg },
-	[SchemeSel]  = { col_font, col_sel2, col_sel2  },
+	[SchemeSel]  = { col_fontsel, col_sel, col_sel  },
 	[SchemeStatus]  = { col_font, col_bg,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_sel1, col_sel2,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_fontsel, col_sel,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
 	[SchemeTagsNorm]  = { col_font, col_bg,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_sel1, col_sel2,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_fontsel, col_sel,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
 	[SchemeInfoNorm]  = { col_font, col_bg,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
