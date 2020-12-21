@@ -15,8 +15,8 @@ static const char *fonts[]          = { "Fantasque Sans Mono:size=12",
                                         "Material Design Icons:size=13" };
 static const char col_bg[]          = "#272a34";
 static const char col_font[]        = "#ffffff";
-static const char col_fontsel[]     = "#333333";
-static const char col_sel[]         = "#06a284";
+static const char col_fontsel[]     = "#06a284";
+static const char col_sel[]         = "#02231c";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_font, col_bg, col_bg },
