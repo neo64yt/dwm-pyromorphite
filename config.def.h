@@ -11,8 +11,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Fira Code:size=10",
-                                        "Material Design Icons:size=12" };
+static const char *fonts[]          = { "Fira Code:size=11",
+                                        "Material Design Icons:size=13" };
 static const char col_bg[]          = "#272a34";
 static const char col_font[]        = "#ffffff";
 static const char col_sel[]         = "#06a284";
