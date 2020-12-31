@@ -14,6 +14,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * nodmenu
 * resizecorners
 * systray
+* statusbutton
 ### Important parts of my dwm build 
 Make sure you don't accidentally delete these files to make it run properly:
 
