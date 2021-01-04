@@ -20,6 +20,7 @@ Make sure you don't accidentally delete these files to make it run properly:
 
 * /usr/local/bin/dwm (binary file)
 * /usr/local/bin/dwm-session (shell script for detecting autostart file)
+* /usr/local/bin/dwm-startmenu (shell script for dwm start menu button)
 * /usr/share/xsessions/dwm.desktop (desktop entry)
 * $HOME/.dwm/autostart.sh (autostart file)
 
@@ -76,3 +77,11 @@ Make sure you executed cleandir.sh file before recompiling dwm (executing instal
 
 ## Keybindings
 Will be updated soon in the man page!
+
+## Start menu 
+Please put your choice of start menu in the .xprofile file by setting the environment variable for $STARTPROMPT
+Example:
+```
+STARTPROMPT=rofi
+```
+
