@@ -30,8 +30,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
-static const char *tagsalt[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]" };
+static const char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", " 󰠔 " };
+static const char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -50,7 +50,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "󰹫",      tile },    /* first entry is default */
+	{ "󰙀",      tile },    /* first entry is default */
 	{ "󰋂",      NULL },    /* no layout function means floating behavior */
 	{ "󰊓",      monocle },
 	{ "﩯",      grid },
