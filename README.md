@@ -42,14 +42,17 @@ cd into the build directory and run:
 
 ### 3. Dependencies
 You may want to install these applications to work with dwm:
-* sxhkd (for setting keybindings. I didn't set them directly into my dwm source code :P )
-* nitrogen (for setting wallpaper)
-* dmenu (for launching applications. My own build is coming soon)
-* nm-applet (for network management)
-* pa-applet (for simple volume settings)
-* mate-polkit/polkit-gnome (for running apps which need administrative permissions)
+* sxhkd (setting keybindings. I didn't set them directly into my dwm source code :P )
+* nitrogen (setting wallpaper)
+* [my dmenu build](https://github.com/neo64yt/dmenu-neo64/) (for launching applications)
+* nm-applet (network management)
+* volumeicon (change audio volume)
+* dunst (notification server)
+* mate-polkit/polkit-gnome (running apps which need administrative permissions)
 * ttf-material-design-icons-extended (showing icons)
-* ttf-fantasque-sans-mono (default font for my build)
+* ttf-fira-code (default font for my build)
+* [my dotfiles](https://github.com/neo64yt/dotfiles/) (integrated seamlessly with this build of dwm)
+* slstatus (my own, optimized for my build, coming soon)
 
 ### 4. Running dwm at startup & autostart applications
 Autostart applications must be put into "$HOME/.dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
@@ -84,6 +87,6 @@ Will be updated soon in the man page!
 Please put your choice of start menu in the .xprofile file by setting the environment variable for $STARTPROMPT
 Example:
 ```
-STARTPROMPT=rofi
+export STARTPROMPT=rofi
 ```
 
