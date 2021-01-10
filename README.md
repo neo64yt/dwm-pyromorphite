@@ -1,13 +1,15 @@
 # dwm-neo64
 dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is suitable for new users (I guess). Still a work in progress.
 
+## Example screenshot with default color scheme
+![screenshot](screen.png)
+
 ### Patches that I use for this build:
 * activetagindicatorbar (modified)
 * alternativetags
 * aspectresize
 * attachaside
 * bar height
-* centeredwindowname
 * colorbar
 * extrabar
 * gridmode
@@ -38,7 +40,7 @@ cd into the build directory and run:
 ./install.sh
 ```
 
-### 3. Optional dependencies
+### 3. Dependencies
 You may want to install these applications to work with dwm:
 * sxhkd (for setting keybindings. I didn't set them directly into my dwm source code :P )
 * nitrogen (for setting wallpaper)
