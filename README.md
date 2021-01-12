@@ -55,7 +55,7 @@ You may want to install these applications to work with dwm:
 * slstatus (my own, optimized for my build, coming soon)
 
 ### 4. Running dwm at startup & autostart applications
-Autostart applications must be put into "$HOME/.dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
+Autostart applications must be put into "$HOME/.config/dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
 
 This is a sample of autostart.sh:
 ```
