@@ -52,7 +52,7 @@ static const Layout layouts[] = {
 	{ "󰙀",      tile },    /* first entry is default */
 	{ "󰋂",      NULL },    /* no layout function means floating behavior */
 	{ "󰼬",      monocle },
-	{ "󰋁",      grid },
+	{ "󰝘",      grid },
 };
 
 /* key definitions */
