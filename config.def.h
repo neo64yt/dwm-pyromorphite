@@ -14,18 +14,20 @@ static const char buttonbar[]       = "󱍕";
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fira Code:size=11",
                                         "Material Design Icons:size=13" };
+/* Color variables */
 static const char col_bg[]          = "#272a34";
 static const char col_font[]        = "#ffffff";
 static const char col_sel[]         = "#12846e";
+static const char black[]           = "#000000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_font, col_bg, col_bg },
 	[SchemeSel]  = { col_font, col_sel, col_sel  },
-	[SchemeStatus]  = { col_font, col_bg,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_font, col_sel,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_font, col_bg,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_font, col_sel,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_font, col_bg,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeStatus]  = { col_font, col_bg,  black  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_sel, black,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { col_font, col_bg,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_font, col_sel,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_font, col_bg,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -37,8 +39,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
+	/* class                instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",               NULL,       NULL,       0,            0,           -1 },
+	{ "Brave-browser",      NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
