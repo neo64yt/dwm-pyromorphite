@@ -13,7 +13,7 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
 static const char buttonbar[]       = "󱍕";
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Fira Code:size=11",
+static const char *fonts[]          = { "JetBrains Mono:size=11",
                                         "Material Design Icons:size=13" };
 /* Color variables */
 static const char col_bg[]          = "#272a34";
