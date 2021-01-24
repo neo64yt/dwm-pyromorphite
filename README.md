@@ -4,11 +4,12 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 ## Example screenshot with default color scheme
 ![screenshot](screen.png)
 
-### Patches that I use for this build:
+### Patches that I currently using for this build:
 * activetagindicatorbar (modified)
 * alternativetags
 * aspectresize
 * attachaside
+* awesomebar
 * bar height
 * colorbar
 * extrabar
@@ -18,6 +19,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * systray
 * statusbutton
 * swallow
+
 ### Important parts of my dwm build 
 Make sure you don't accidentally delete these files to make it run properly:
 

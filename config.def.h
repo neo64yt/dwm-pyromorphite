@@ -11,7 +11,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
-static const char buttonbar[]       = "󱍕";
+static const char buttonbar[]       = "󱍕";      /* button name to show */
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "JetBrains Mono:size=11",
                                         "Material Design Icons:size=13" };
@@ -29,6 +29,7 @@ static const char *colors[][3]      = {
 	[SchemeTagsNorm]  = { col_font, col_bg,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
 	[SchemeInfoSel]  = { col_font, col_sel,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
 	[SchemeInfoNorm]  = { col_font, col_bg,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeHid] = { col_sel, col_bg, black },
 };
 
 /* tagging */
@@ -124,6 +125,7 @@ static Button buttons[] = {
 	{ ClkButton,		0,		Button1,	spawn,		{.v = startcmd } },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
