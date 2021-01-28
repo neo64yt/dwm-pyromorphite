@@ -37,7 +37,7 @@ static const char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", "
 static const char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
 
 /* Default apps (Please input the window class or the window title of the app, can be determined using xprop) */
-static const char web_browser[] = "LibreWolf";
+static const char web_browser[] = "Chromium";
 static const char terminal[] = "Termite";
 static const char img_editor[] = "Gimp";
 
