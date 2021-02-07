@@ -6,6 +6,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 
 ### Patches that I currently using for this build:
 * activetagindicatorbar (modified)
+* actualfullscreen
 * alternativetags
 * aspectresize
 * attachaside
