@@ -11,7 +11,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char statussep         = ';';      /* separator between status bars */
-static const char buttonbar[]       = "󰣇";      /* button name to show */
+static const char buttonbar[]       = "󰫥";      /* button name to show */
 static const int user_bh            = 30;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "JetBrains Mono:size=11",
                                         "Material Design Icons:size=13" };
