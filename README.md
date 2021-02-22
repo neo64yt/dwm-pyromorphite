@@ -1,7 +1,7 @@
 # dwm-neo64
-dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is suitable for new users (I guess). Still a work in progress.
+dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is used on my daily driver. Still a work in progress.
 
-## Example screenshot with default color scheme
+### Screenshot
 ![screenshot](screen.png)
 
 ### Patches that I currently using for this build:
@@ -21,9 +21,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * statusbutton
 * swallow
 
-### Important parts of my dwm build 
-Make sure you don't accidentally delete these files to make it run properly:
-
+### These files are installed on the system:
 * /usr/local/bin/dwm (binary file)
 * /usr/local/bin/dwm-session (shell script for detecting autostart file)
 * /usr/local/bin/dwm-startmenu (shell script for dwm start menu button)
@@ -38,25 +36,24 @@ Run this command:
 git clone https://github.com/neo64yt/dwm-neo64.git
 ```
 
-### 2. Installing dwm
-cd into the build directory and run:
-```
-./install.sh
-```
+### 2. Dependencies
+Required:
+* libxcb
+* Xlib-libxcb
+* xcb-res
+* ttf-jetbrains-mono (JetBrains Mono font)
+* ttf-material-design-icons-extended (Material Icons font)
 
-### 3. Dependencies
-You may want to install these applications to work with dwm:
-* sxhkd (setting keybindings. I didn't set them directly into my dwm source code :P )
-* nitrogen (setting wallpaper)
-* [my dmenu build](https://github.com/neo64yt/dmenu-neo64/) (for launching applications)
-* nm-applet (network management)
-* volumeicon (change audio volume)
-* dunst (notification server)
-* mate-polkit/polkit-gnome (running apps which need administrative permissions)
-* ttf-material-design-icons-extended (showing icons)
-* ttf-fira-code (default font for my build)
-* [my dotfiles](https://github.com/neo64yt/dotfiles/) (integrated seamlessly with this build of dwm)
-* slstatus (my own, optimized for my build, coming soon)
+Optional (Probably for full experience of my rice):
+* [My dotfiles](https://github.com/neo64yt/dwm-neo64)
+* [My build of dwm](https://github.com/neo64yt/dmenu-neo64)
+* [My build of slstatus](https://github.com/neo64yt/slstatus-neo64)
+
+### 3. Installing dwm
+You can either execute the install.sh script or run this in the terminal:
+```
+sudo make install 
+```
 
 ### 4. Running dwm at startup & autostart applications
 Autostart applications must be put into "$HOME/.config/dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
@@ -76,7 +73,7 @@ A desktop entry file for dwm will be automatically installed to "/usr/share/xses
 Put "exec /usr/local/bin/dwm-session" into your .xinitrc file.
 
 ## Customizing dwm
-dwm is customizable by editing the source code (mainly config.def.h) and patching. To apply a patch, go to this build directory and execute:
+dwm is customized by editing the source code or patching it. To apply a patch, go to this build directory and execute:
 ```
 patch < /directory/to/patch/file.diff
 # Change the placeholder with a valid file location
