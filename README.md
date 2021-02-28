@@ -24,7 +24,6 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 ### These files are installed on the system:
 * /usr/local/bin/dwm (binary file)
 * /usr/local/bin/dwm-session (shell script for detecting autostart file)
-* /usr/local/bin/dwm-startmenu (shell script for dwm start menu button)
 * /usr/share/xsessions/dwm.desktop (desktop entry)
 * $HOME/.dwm/autostart.sh (autostart file)
 
