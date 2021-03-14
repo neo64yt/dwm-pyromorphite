@@ -2,7 +2,7 @@
 dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is used on my daily driver. Still a work in progress.
 
 ### Screenshot
-![screenshot](screen.png)
+![screenshot](dwm.png)
 
 ### Patches that I currently using for this build:
 * activetagindicatorbar (modified)
