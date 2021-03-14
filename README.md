@@ -25,7 +25,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * /usr/local/bin/dwm (binary file)
 * /usr/local/bin/dwm-session (shell script for detecting autostart file)
 * /usr/share/xsessions/dwm.desktop (desktop entry)
-* $HOME/.dwm/autostart.sh (autostart file)
+* $XDG_CONFIG_HOME/dwm/autostart.sh (autostart file)
 
 ## Installation guide
 
@@ -55,13 +55,13 @@ sudo make install
 ```
 
 ### 4. Running dwm at startup & autostart applications
-Autostart applications must be put into "$HOME/.config/dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
+Autostart applications must be put into "$XDG_CONFIG_HOME/dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
 
 This is a sample of autostart.sh:
 ```
 #!/bin/sh
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-sxhkd -c $HOME/.dwm/sxhkdrc &
+sxhkd -c $XDG_CONFIG_HOME/dwm/sxhkdrc &
 # This example script starts mate-polkit and sxhkd with a custom config file
 ```
 
