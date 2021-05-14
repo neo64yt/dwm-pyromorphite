@@ -1,10 +1,10 @@
 # dwm-neo64
 dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is used on my daily driver. Still a work in progress.
 
-### Screenshot
+## Screenshot
 ![screenshot](dwm.png)
 
-### Patches that I currently using for this build:
+## Patches used in this build:
 * activetagindicatorbar (modified)
 * actualfullscreen
 * alternativetags
@@ -21,11 +21,24 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * statusbutton
 * swallow
 
-### These files are installed on the system:
+## These files are installed on the system:
 * /usr/local/bin/dwm (binary file)
 * /usr/local/bin/dwm-session (shell script for detecting autostart file)
 * /usr/share/xsessions/dwm.desktop (desktop entry)
 * $XDG_CONFIG_HOME/dwm/autostart.sh (autostart file)
+
+## Dependencies
+### Required:
+* libxcb
+* Xlib-libxcb
+* xcb-res
+* ttf-jetbrains-mono (JetBrains Mono font)
+* ttf-material-design-icons-extended (Material Icons font)
+
+### Optional (Probably for full experience of my rice):
+* [My dotfiles](https://github.com/neo64yt/dotfiles)
+* [My build of dwm](https://github.com/neo64yt/dmenu-neo64)
+* [My build of slstatus](https://github.com/neo64yt/slstatus-neo64)
 
 ## Installation guide
 
@@ -35,26 +48,13 @@ Run this command:
 git clone https://github.com/neo64yt/dwm-neo64.git
 ```
 
-### 2. Dependencies
-Required:
-* libxcb
-* Xlib-libxcb
-* xcb-res
-* ttf-jetbrains-mono (JetBrains Mono font)
-* ttf-material-design-icons-extended (Material Icons font)
-
-Optional (Probably for full experience of my rice):
-* [My dotfiles](https://github.com/neo64yt/dwm-neo64)
-* [My build of dwm](https://github.com/neo64yt/dmenu-neo64)
-* [My build of slstatus](https://github.com/neo64yt/slstatus-neo64)
-
-### 3. Installing dwm
+### 2. Installing dwm
 You can either execute the install.sh script or run this in the terminal:
 ```
 sudo make install 
 ```
 
-### 4. Running dwm at startup & autostart applications
+### 3. Running dwm at startup & autostart applications
 Autostart applications must be put into "$XDG_CONFIG_HOME/dwm/autostart.sh". It will be automatically detected by "/usr/local/bin/dwm-session".
 
 This is a sample of autostart.sh:
