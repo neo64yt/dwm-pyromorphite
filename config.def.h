@@ -41,6 +41,7 @@ static const char web_browser1[] = "Chromium";
 static const char web_browser2[] = "firefox";
 static const char terminal[] = "Alacritty";
 static const char img_editor[] = "Gimp";
+static const char nested_x[] = "Xephyr";
 
 /* Window rules */
 static const Rule rules[] = {
@@ -54,6 +55,7 @@ static const Rule rules[] = {
 	{ web_browser2,         NULL,       NULL,             1 << 3,       0,           0,          1,          -1 },
 	{ terminal,             NULL,       NULL,             0,            0,           1,          0,          -1 },
 	{ NULL,                 NULL,       "Event Tester",   0,            0,           0,          1,          -1 },
+	{ nested_x,             NULL,       NULL,             0,            0,           0,          1,          -1 },
 };
 
 /* layout(s) */
