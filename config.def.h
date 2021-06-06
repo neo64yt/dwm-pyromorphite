@@ -37,8 +37,7 @@ static const char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", "
 static const char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
 
 /* Default apps (Please input the window class or the window title of the app, can be determined using xprop) */
-static const char web_browser1[] = "Chromium";
-static const char web_browser2[] = "firefox";
+static const char web_browser[] = "firefox";
 static const char terminal[] = "Alacritty";
 static const char img_editor[] = "Gimp";
 static const char nested_x[] = "Xephyr";
@@ -51,11 +50,11 @@ static const Rule rules[] = {
 	 */
 	/* class                instance    title             tags mask     isfloating   isterminal  noswallow   monitor */
 	{ img_editor,           NULL,       NULL,             0,            0,           0,          0,          -1 },
-	{ web_browser1,         NULL,       NULL,             1 << 3,       0,           0,          1,          -1 },
-	{ web_browser2,         NULL,       NULL,             1 << 3,       0,           0,          1,          -1 },
+	{ web_browser,          NULL,       NULL,             1 << 3,       0,           0,          1,          -1 },
 	{ terminal,             NULL,       NULL,             0,            0,           1,          0,          -1 },
 	{ NULL,                 NULL,       "Event Tester",   0,            0,           0,          1,          -1 },
 	{ nested_x,             NULL,       NULL,             0,            0,           0,          1,          -1 },
+	{ "anbox",		NULL,	    NULL, 	      0,	    0,		 0,	     1,          -1 },
 };
 
 /* layout(s) */
