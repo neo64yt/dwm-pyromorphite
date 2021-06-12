@@ -83,7 +83,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *startcmd[] = { "/bin/sh", "-c", "$STARTMENU", NULL };
+static const char *startmenu[] = { "/bin/sh", "-c", "$STARTMENU", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -126,7 +126,7 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkButton,		0,		Button1,	spawn,		{.v = startcmd } },
+	{ ClkButton,		0,		Button1,	spawn,		{.v = startmenu } },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
