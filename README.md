@@ -15,6 +15,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * colorbar
 * ewmhtags
 * extrabar
+* fixborders
 * gridmode
 * monoclesymbol
 * nodmenu
