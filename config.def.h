@@ -1,5 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Window icon */
+#define ICONSIZE 22   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
+
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */

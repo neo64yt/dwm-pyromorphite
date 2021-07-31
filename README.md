@@ -8,6 +8,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * activetagindicatorbar (modified)
 * actualfullscreen
 * alternativetags
+* alwayscenter
 * aspectresize
 * attachaside
 * awesomebar
@@ -23,6 +24,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * systray
 * statusbutton
 * swallow
+* winicon
 
 ## These files are installed on the system:
 * /usr/local/bin/dwm (dwm binary)
