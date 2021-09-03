@@ -59,6 +59,7 @@ static const Rule rules[] = {
 	{ NULL,                 NULL,       "Event Tester",   0,            0,           0,          1,          -1 },
 	{ nested_x,             NULL,       NULL,             0,            0,           0,          1,          -1 },
 	{ "anbox",		NULL,	    NULL, 	      0,	    0,		 0,	     1,          -1 },
+	{ "Yad",		NULL,	    NULL, 	      0,	    1,		 0,	     1,          -1 },
 };
 
 /* layout(s) */
