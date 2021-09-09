@@ -1,7 +1,11 @@
-# !/bin/sh
+#!/bin/sh
 
 # Autostart file
 $XDG_CONFIG_HOME/dwm/autostart.sh
 
 # Execute dwm
 exec /usr/local/bin/dwm 
+
+
+
+# vim: ft=sh
