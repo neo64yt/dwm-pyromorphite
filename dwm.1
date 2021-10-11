@@ -59,15 +59,6 @@ click on a tag label applies that tag to the focused window.
 click on a tag label adds/removes that tag to/from the focused window.
 .SS Keyboard commands
 .TP
-.B Mod\-Shift\-Return
-Start
-.BR st(1).
-.TP
-.B Mod\-p
-Spawn
-.BR dmenu(1)
-for launching other programs.
-.TP
 .B Mod\-,
 Focus previous screen, if any.
 .TP
@@ -79,6 +70,9 @@ Send focused window to previous screen, if any.
 .TP
 .B Mod\-Shift\-.
 Send focused window to next screen, if any.
+.TP
+.B Mod\-a
+Toggles alternative tag names on and off.
 .TP
 .B Mod\-b
 Toggles bar on and off.
@@ -92,14 +86,23 @@ Sets floating layout.
 .B Mod\-m
 Sets monocle layout.
 .TP
+.B Mod\-g
+Sets grid layout.
+.TP
 .B Mod\-space
 Toggles between current and previous layout.
 .TP
 .B Mod\-j
-Focus next window.
+Focus next visible window.
 .TP
 .B Mod\-k
-Focus previous window.
+Focus previous visible window.
+.TP
+.B Mod\-j
+Focus next hidden window.
+.TP
+.B Mod\-k
+Focus previous hidden window.
 .TP
 .B Mod\-i
 Increase number of windows in master area.
@@ -116,7 +119,10 @@ Decrease master area size.
 .B Mod\-Return
 Zooms/cycles focused window to/from master area (tiled layouts only).
 .TP
-.B Mod\-Shift\-c
+.B Mod\-x
+Hide focused window.
+.TP
+.B Mod\-Shift\-x
 Close focused window.
 .TP
 .B Mod\-Shift\-space

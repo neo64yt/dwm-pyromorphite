@@ -94,7 +94,7 @@ enum { NetSupported, NetWMName, NetWMIcon, NetWMState, NetWMCheck,
        NetWMWindowTypeDialog, NetClientList, NetDesktopNames, NetDesktopViewport, NetNumberOfDesktops, NetCurrentDesktop, NetLast }; /* EWMH atoms */
 enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
-enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkButton, ClkWinTitle,
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
 
 typedef union {
@@ -160,6 +160,7 @@ struct Monitor {
 	unsigned int tagset[2];
 	int showbar;
 	int topbar;
+	int hidsel;
 	Client *clients;
 	Client *sel;
 	Client *stack;
@@ -216,7 +217,9 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
-static void focusstack(const Arg *arg);
+static void focusstackvis(const Arg *arg);
+static void focusstackhid(const Arg *arg);
+static void focusstack(int inc, int vis);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
 static long getstate(Window w);
@@ -225,7 +228,7 @@ static unsigned int getsystraywidth();
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
-static void hide(Client *c);
+static void hide(const Arg *arg);
 static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
@@ -263,7 +266,8 @@ static void setnumdesktops(void);
 static void setup(void);
 static void setviewport(void);
 static void seturgent(Client *c, int urg);
-static void show(Client *c);
+static void show(const Arg *arg);
+static void showwin(Client *c);
 static void showhide(Client *c);
 static void sigchld(int unused);
 static void spawn(const Arg *arg);
@@ -277,8 +281,8 @@ static void togglefloating(const Arg *arg);
 static void togglefullscr(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
-static void freeicon(Client *c);
 static void togglewin(const Arg *arg);
+static void freeicon(Client *c);
 static void unfocus(Client *c, int setfocus);
 static void unmanage(Client *c, int destroyed);
 static void unmapnotify(XEvent *e);
@@ -599,39 +603,35 @@ buttonpress(XEvent *e)
 	}
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
-		x += TEXTW(buttonbar);
-		if(ev->x < x) {
-			click = ClkButton;
-		} else {
-			do
-				x += TEXTW(tags[i]);
-			while (ev->x >= x && ++i < LENGTH(tags));
-			if (i < LENGTH(tags)) {
-				click = ClkTagBar;
-				arg.ui = 1 << i;
-			} else if (ev->x < x + blw)
-				click = ClkLtSymbol;
-			else if (ev->x > selmon->ww - (int)TEXTW(stext) + lrpad - 2 - getsystraywidth())
-				click = ClkStatusText;
+		do
+			x += TEXTW(tags[i]);
+		while (ev->x >= x && ++i < LENGTH(tags));
+		if (i < LENGTH(tags)) {
+			click = ClkTagBar;
+			arg.ui = 1 << i;
+		} else if (ev->x < x + blw)
+			click = ClkLtSymbol;
+		/* 2px right padding */
+		else if (ev->x > selmon->ww - (int)TEXTW(stext) + lrpad - 2 - getsystraywidth())
+			click = ClkStatusText;
 		else {
 			x += blw;
 			c = m->clients;
 
 			if (c) {
 				do {
-
 					if (!ISVISIBLE(c))
 						continue;
 					else
 						x += (1.0 / (double)m->bt) * m->btw;
-					} while (ev->x > x && (c = c->next));
+				} while (ev->x > x && (c = c->next));
 
-					click = ClkWinTitle;
-					arg.v = c;
-				}
+				click = ClkWinTitle;
+				arg.v = c;
 			}
 		}
-		} else if ((c = wintoclient(ev->window))) {
+
+	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
 		XAllowEvents(dpy, ReplayPointer, CurrentTime);
@@ -974,9 +974,6 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
-	w = blw = TEXTW(buttonbar);
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		wdelta = selmon->alttag ? abs(TEXTW(tags[i]) - TEXTW(tagsalt[i])) / 2 : 0;
@@ -1081,10 +1078,18 @@ expose(XEvent *e)
 void
 focus(Client *c)
 {
-	if (!c || !ISVISIBLE(c) || HIDDEN(c))
+	if (!c || !ISVISIBLE(c))
 		for (c = selmon->stack; c && (!ISVISIBLE(c) || HIDDEN(c)); c = c->snext);
-	if (selmon->sel && selmon->sel != c)
+	if (selmon->sel && selmon->sel != c) {
 		unfocus(selmon->sel, 0);
+
+		if (selmon->hidsel) {
+			hidewin(selmon->sel);
+			if (c)
+				arrange(c->mon);
+			selmon->hidsel = 0;
+		}
+	}
 	if (c) {
 		if (c->mon != selmon)
 			selmon = c->mon;
@@ -1128,28 +1133,57 @@ focusmon(const Arg *arg)
 }
 
 void
-focusstack(const Arg *arg)
+focusstackvis(const Arg *arg)
+{
+	focusstack(arg->i, 0);
+}
+
+void
+focusstackhid(const Arg *arg)
+{
+	focusstack(arg->i, 1);
+}
+
+void
+focusstack(int inc, int hid)
 {
 	Client *c = NULL, *i;
 
-	if (!selmon->sel)
+	if (!selmon->sel && !hid)
 		return;
-	if (arg->i > 0) {
-		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
+	if (!selmon->clients)
+		return;
+
+	if (inc > 0) {
+		if (selmon->sel)
+			for (c = selmon->sel->next;
+					 c && (!ISVISIBLE(c) || (!hid && HIDDEN(c)));
+					 c = c->next);
 		if (!c)
-			for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
+			for (c = selmon->clients;
+					 c && (!ISVISIBLE(c) || (!hid && HIDDEN(c)));
+					 c = c->next);
 	} else {
-		for (i = selmon->clients; i != selmon->sel; i = i->next)
-			if (ISVISIBLE(i))
-				c = i;
+		if (selmon->sel) {
+			for (i = selmon->clients; i != selmon->sel; i = i->next)
+				if (ISVISIBLE(i) && !(!hid && HIDDEN(i)))
+					c = i;
+		} else
+			c = selmon->clients;
 		if (!c)
 			for (; i; i = i->next)
-				if (ISVISIBLE(i))
+				if (ISVISIBLE(i) && !(!hid && HIDDEN(i)))
 					c = i;
 	}
+
 	if (c) {
 		focus(c);
 		restack(selmon);
+
+		if (HIDDEN(c)) {
+			showwin(c);
+			c->mon->hidsel = 1;
+		}
 	}
 }
 
@@ -1358,7 +1392,15 @@ grabkeys(void)
 }
 
 void
-hide(Client *c) {
+hide(const Arg *arg)
+{
+	hidewin(selmon->sel);
+	focus(NULL);
+	arrange(selmon);
+}
+
+void
+hidewin(Client *c) {
 	if (!c || HIDDEN(c))
 		return;
 
@@ -1377,9 +1419,6 @@ hide(Client *c) {
 	XSelectInput(dpy, root, ra.your_event_mask);
 	XSelectInput(dpy, w, ca.your_event_mask);
 	XUngrabServer(dpy);
-
-	focus(c->snext);
-	arrange(c->mon);
 }
 
 void
@@ -1708,7 +1747,7 @@ quit(const Arg *arg)
 	for (m = mons; m; m = m->next) {
 		if (m) {
 			for (c = m->stack; c; c = c->next)
-				if (c && HIDDEN(c)) show(c);
+				if (c && HIDDEN(c)) showwin(c);
 		}
 	}
 
@@ -2179,7 +2218,15 @@ seturgent(Client *c, int urg)
 }
 
 void
-show(Client *c)
+show(const Arg *arg)
+{
+	if (selmon->hidsel)
+		selmon->hidsel = 0;
+	showwin(selmon->sel);
+}
+
+void
+showwin(Client *c)
 {
 	if (!c || !HIDDEN(c))
 		return;
@@ -2354,25 +2401,28 @@ toggleview(const Arg *arg)
 }
 
 void
-togglewin(const Arg *arg)
-{
-	Client *c = (Client*)arg->v;
-	if (c == selmon->sel)
-		hide(c);
-	else {
-		if (HIDDEN(c))
-			show(c);
-		focus(c);
-		restack(selmon);
-	}
-}
-
-void
 freeicon(Client *c)
 {
 	if (c->icon) {
 		XDestroyImage(c->icon);
 		c->icon = NULL;
+	}
+}
+
+void
+togglewin(const Arg *arg)
+{
+	Client *c = (Client*)arg->v;
+
+	if (c == selmon->sel) {
+		hidewin(c);
+		focus(NULL);
+		arrange(c->mon);
+	} else {
+		if (HIDDEN(c))
+			showwin(c);
+		focus(c);
+		restack(selmon);
 	}
 }
 

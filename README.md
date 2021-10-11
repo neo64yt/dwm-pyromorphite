@@ -11,7 +11,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * alwayscenter
 * aspectresize
 * attachaside
-* awesomebar
+* awesomebar (2020-09-07 version)
 * bar height
 * colorbar
 * ewmhtags
@@ -22,7 +22,6 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * nodmenu
 * resizecorners
 * systray
-* statusbutton
 * swallow
 * winicon
 
@@ -87,11 +86,3 @@ Make sure you executed cleandir.sh file before recompiling dwm (executing instal
 
 ## Keybindings
 Will be updated soon in the man page!
-
-## Start menu 
-Please put your choice of start menu in the .xprofile file by setting the environment variable for $STARTPROMPT
-Example:
-```
-export STARTPROMPT=rofi
-```
-
