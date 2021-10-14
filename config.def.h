@@ -1,18 +1,23 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Window icon */
-#define ICONSIZE 22   /* icon size */
+#define ICONSIZE 20   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 30;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "JetBrains Mono:size=11",
-                                        "Material Design Icons:size=13" };
+static const unsigned int borderpx       = 3;        /* border pixel of windows */
+static const unsigned int snap           = 32;       /* snap pixel */
+static const unsigned int systraypinning = 0;        /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */ 
+static const unsigned int systrayonleft  = 0;        /* 0: systray in the right corner, >0: systray on left of status text */ 
+static const unsigned int systrayspacing = 2;        /* systray spacing */ 
+static const int systraypinningfailfirst = 1;        /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor */
+static const int showsystray             = 1;        /* 0 means no systray */
+static const int swallowfloating         = 0;        /* 1 means swallow floating windows by default */
+static const int showbar                 = 1;        /* 0 means no bar */
+static const int topbar                  = 1;        /* 0 means bottom bar */
+static const int user_bh                 = 27;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]               = { "JetBrains Mono:size=11",
+                                             "Material Design Icons:size=13" };
 /* Color variables */
 static const char col_bg[]          = "#272a34";
 static const char col_font[]        = "#ffffff";
@@ -146,4 +151,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
