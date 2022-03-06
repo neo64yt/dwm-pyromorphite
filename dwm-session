@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Autostart file
-$XDG_CONFIG_HOME/dwm/autostart.sh
+[ -f ${XDG_CONFIG_HOME:-$HOME/.config}/dwm/autostart.sh ] && ${XDG_CONFIG_HOME:-$HOME/.config}/dwm/autostart.sh
 
 # Execute dwm
 exec /usr/local/bin/dwm 

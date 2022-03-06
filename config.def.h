@@ -65,6 +65,7 @@ static const Rule rules[] = {
 	{ "anbox",		NULL,	    NULL, 	      0,	    0,		 0,	     1,          -1 },
 	{ "Yad",		NULL,       NULL,             0,	    1,		 0,	     1,          -1 },
 	{ "scrcpy",		NULL,	    NULL,             0,            0,           0,          1,          -1 },
+	{ "MEGAsync",		NULL,	    NULL,	      0,	    1,		 0,	     1,		 -1 },
 };
 
 /* layout(s) */
