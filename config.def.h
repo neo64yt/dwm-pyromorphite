@@ -1,12 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Window icon */
-#define ICONSIZE 20   /* icon size */
+#define ICONSIZE 15   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
 /* appearance */
 static const unsigned int borderpx       = 3;        /* border pixel of windows */
 static const unsigned int snap           = 32;       /* snap pixel */
+static const int scalepreview            = 2;        /* tag preview scaling */
 static const unsigned int systraypinning = 0;        /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */ 
 static const unsigned int systrayonleft  = 0;        /* 0: systray in the right corner, >0: systray on left of status text */ 
 static const unsigned int systrayspacing = 1;        /* systray spacing */ 
@@ -19,20 +20,20 @@ static const int user_bh                 = 27;       /* 0 means that dwm will ca
 static const char *fonts[]               = { "JetBrains Mono:size=11",
                                              "Material Design Icons:size=13" };
 /* Color variables */
-static const char col_bg[]          = "#272a34";
-static const char col_font[]        = "#ffffff";
-static const char col_sel[]         = "#12846e";
+static const char grey[]            = "#272a34";
+static const char white[]           = "#ffffff";
+static const char aquagreen[]       = "#12846e";
 static const char black[]           = "#000000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_font, col_bg, col_bg },
-	[SchemeSel]  = { col_font, col_sel, col_sel  },
-	[SchemeStatus]  = { col_font, col_bg,  black  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_sel, black,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_font, col_bg,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_font, col_sel,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_font, col_bg,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
-	[SchemeHid] = { col_sel, col_bg, black },
+	[SchemeNorm] = { white, grey, grey },
+	[SchemeSel]  = { white, aquagreen, aquagreen  },
+	[SchemeStatus]  = { white, aquagreen,  black  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { aquagreen, black,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { white, grey,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { aquagreen, black,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { white, grey,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeHid] = { aquagreen, grey, black },
 };
 
 /* tagging */
@@ -62,10 +63,10 @@ static const Rule rules[] = {
 	{ NULL,                 NULL,       "Event Tester",   0,            0,           0,          1,          -1 },
 	/* Xeypher */
 	{ nested_x,             NULL,       NULL,             0,            0,           0,          1,          -1 },
-	{ "anbox",		NULL,	    NULL, 	      0,	    0,		 0,	     1,          -1 },
-	{ "Yad",		NULL,       NULL,             0,	    1,		 0,	     1,          -1 },
-	{ "scrcpy",		NULL,	    NULL,             0,            0,           0,          1,          -1 },
-	{ "MEGAsync",		NULL,	    NULL,	      0,	    1,		 0,	     1,		 -1 },
+	{ "anbox",		        NULL,	    NULL,    	      0,            0,           0, 	     1,          -1 },
+	{ "Yad",		        NULL,       NULL,             0,            1,		     0,	         1,          -1 },
+	{ "scrcpy",		        NULL,	    NULL,             0,            0,           0,          1,          -1 },
+	{ "MEGAsync",		    NULL,	    NULL,	          0,    	    1,		     0,	         1, 		 -1 },
 };
 
 /* layout(s) */
@@ -77,9 +78,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "󰙀",      tile },    /* first entry is default */
-	{ "󰋂",      NULL },    /* no layout function means floating behavior */
+	{ "󱂬",      NULL },    /* no layout function means floating behavior */
 	{ "󰼬",      monocle },
 	{ "󰝘",      gaplessgrid },
+    { "󱒅",      centeredmaster },
+    { "󱒆",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -115,6 +118,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
+    { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[4]} },
+    { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -134,6 +139,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
 /* button definitions */

@@ -16,6 +16,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * attachaside
 * awesomebar (2020-09-07 version)
 * bar height
+* centeredmaster
 * colorbar
 * ewmhtags
 * fixborders
@@ -23,32 +24,23 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * monoclesymbol
 * nodmenu
 * resizecorners
+* restartsig
 * systray
 * swallow
+* tag preview
 * winicon
-
-## These files are installed on the system
-
-* `/usr/local/bin/dwm` (dwm binary)
-* `/usr/local/bin/dwm-session` (dwm session)
-* `/usr/share/xsessions/dwm.desktop` (desktop entry)
-* `/usr/local/share/man/man1/dwm.1` (dwm manpage)
 
 ## Dependencies
 
-### Required
-
+* Xlib
 * libxcb
 * Xlib-libxcb
 * xcb-res
+* Imlib2
+* libxft
+* libxinerama
 * ttf-jetbrains-mono (JetBrains Mono font)
 * ttf-material-design-icons-extended (Material Icons font)
-
-### Optional (Probably for full experience of my rice)
-
-* [My dotfiles](https://github.com/neo64yt/dotfiles)
-* [My build of dmenu](https://github.com/neo64yt/dmenu-neo64)
-* [My build of slstatus](https://github.com/neo64yt/slstatus-neo64)
 
 ## Installation guide
 
