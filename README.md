@@ -29,7 +29,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * systray
 * swallow
 * tag preview
-* underlinetags
+* underlinetags (modified)
 * winicon
 
 ## Dependencies
