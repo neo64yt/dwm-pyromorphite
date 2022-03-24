@@ -605,7 +605,7 @@ unswallow(Client *c)
 void
 buttonpress(XEvent *e)
 {
-	unsigned int i, x, click;
+	unsigned int i, x, click, occ = 0;
 	Arg arg = {0};
 	Client *c;
 	Monitor *m;
@@ -624,9 +624,14 @@ buttonpress(XEvent *e)
 				selmon->previewshow = 0;
 		}
 		i = x = 0;
-		do
+		for (c = m->clients; c; c = c->next)
+			occ |= c->tags == 255 ? 0 : c->tags;
+		do {
+			/* do not reserve space for vacant tags */
+			if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+				continue;
 			x += TEXTW(tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
+		} while (ev->x >= x && ++i < LENGTH(tags));
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
 			arg.ui = 1 << i;
@@ -974,6 +979,7 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
+    int indn;
 	int x, w, wdelta, tw = 0, stw = 0, n = 0, scm;
 	/* int boxs = drw->fonts->h / 9; */ /* currently unsused */
 	int boxw = drw->fonts->h / 6 + 2;
@@ -994,20 +1000,30 @@ drawbar(Monitor *m)
 	for (c = m->clients; c; c = c->next) {
 		if (ISVISIBLE(c))
 			n++;
-		occ |= c->tags;
+		occ |= c->tags == 255 ? 0 : c->tags;
 		if (c->isurgent)
 			urg |= c->tags;
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+        /* do not draw vacant tags */
+        if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+            continue;
+
+        indn = 0;
 		w = TEXTW(tags[i]);
 		wdelta = selmon->alttag ? abs(TEXTW(tags[i]) - TEXTW(tagsalt[i])) / 2 : 0;
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
 		drw_text(drw, x, 0, w, bh, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxw, bh - boxw/2, w - ( 2 * boxw + 1), boxw/2,
-			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-			    urg & 1 << i);
+        if (ulineall || m->tagset[m->seltags] & 1 << i)
+            drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset, w - (ulinepad * 2), ulinestroke, 1, 0);
+		
+        for (c = m->clients; c; c = c->next) {
+            if (c->tags & (1 << i)) {
+                drw_rect(drw, x, 1 + (indn * 2), selmon->sel == c ? 6 : 1, 1, 1, urg & 1 << i);
+                indn++;
+            }
+        }
 
 		x += w;
 	}
