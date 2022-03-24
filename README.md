@@ -16,7 +16,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 * awesomebar (2020-09-07 version)
 * bar height
 * centeredmaster
-* clientindicatorshidevacanttags
+* clientindicators
 * colorbar
 * decorhints
 * ewmhtags
