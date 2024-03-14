@@ -21,18 +21,18 @@ static const char *fonts[]               = { "JetBrains Mono:size=11",
 /* Color variables */
 static const char grey[]            = "#272a34";
 static const char white[]           = "#ffffff";
-static const char darkcyan[]        = "#12846e";
+static const char teal[]        = "#12846e";
 static const char black[]           = "#000000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { white, grey, grey },
-	[SchemeSel]  = { white, darkcyan, darkcyan  },
-	[SchemeStatus]  = { white, darkcyan,  black  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { darkcyan, black,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { white, grey,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { darkcyan, black,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { white, grey,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
-	[SchemeHid] = { darkcyan, grey, black },
+	[SchemeSel]  = { white, teal, teal  },
+	[SchemeStatus]  = { white, teal,  black  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { teal, grey,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { white, black,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { teal, grey,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { white, black,  black  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeHid] = { teal, black, black },
 };
 
 /* tagging */
@@ -102,9 +102,24 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
+static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *run_prompt[] = { "rofi", "-show", "run", NULL };
+static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
+static const char *prefapps[] = { "prefapps", NULL };
+
+/* commands loaded from environment variables */
+/* use the SHCMD macro when setting keybinds for them */
+#define TERMCMD "$TERMINAL"
+#define QUICKMENU "$QUICKMENU"
+#define SETMGR "$SETTINGS_MGR"
+#define SCRSHOT "$SCREENSHOOTER"
+#define SESSIONMGR "$SESSION_MGR"
+#define BROWSER "$BROWSER"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+    
+    /* dwm-related keybinds */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
@@ -135,7 +150,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_s,      show,           {0} },
-	{ MODKEY,		        XK_x,      hide,           {0} },
+	{ MODKEY,		                XK_x,      hide,           {0} },
 	{ MODKEY,                       XK_a,      togglealttag,   {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -144,7 +159,22 @@ static Key keys[] = {
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+
+    /* command keybinds */
+    /* direct commands */
+    { MODKEY,                       XK_r,               spawn,          {.v = menucmd } },
+    { MODKEY,                       XK_p,               spawn,          {.v = run_prompt } },
+    { MODKEY,                       XK_e,               spawn,          {.v = emojipick } },
+    { MODKEY|ShiftMask,             XK_r,               spawn,          {.v = prefapps } },
+
+    /* commands loaded from environment variables */
+    { MODKEY|ShiftMask,             XK_Return,          spawn,          SHCMD(TERMCMD) },
+    { MODKEY|ShiftMask,             XK_m,               spawn,          SHCMD(QUICKMENU) },
+    { MODKEY|ShiftMask,             XK_s,               spawn,          SHCMD(SETMGR) },
+    { 0,                            XK_Print,           spawn,          SHCMD(SCRSHOT) },
+    { 0,                            XF86XK_PowerOff,    spawn,          SHCMD(SESSIONMGR) },
+    { MODKEY,                       XK_w,               spawn,          SHCMD(BROWSER) }
 };
 
 /* button definitions */

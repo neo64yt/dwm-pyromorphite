@@ -1,6 +1,6 @@
-# dwm-neo64
+# dwm-pyromorphite
 
-dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless.org. It is written in C to get great performance with little usage of resources. It is customized by editing the source code which keeps it simple, fast and lightweight. This is my heavily patched dwm build which is used on my daily driver. Still a work in progress.
+dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (based on dwm-6.2) and a part of Pyromorphite Desktop. Since I have used this build without any new customization for at least two years, and I'm also slowly switching to Wayland (via [dwl-pyromorphite](https://codeberg.org/neo64yt/dwl-pyromorphite)), do not ever expect it to have frequent updates and new patches applied (or even be rebased on the latest version of upstream dwm). I only keep this as an X fallback of my personal desktop setup.  
 
 ## Screenshot
 
@@ -35,13 +35,12 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 
 * Xlib
 * libxcb
-* Xlib-libxcb
 * xcb-res
 * Imlib2
 * libxft
 * libxinerama
-* ttf-jetbrains-mono (JetBrains Mono font)
-* ttf-material-design-icons-extended (Material Icons font)
+* JetBrains Mono font
+* Material Design Icons font
 
 ## Installation guide
 
@@ -50,7 +49,7 @@ dwm (Dynamic Window Manager) is a lightweight dynamic window manager by suckless
 Run this command:
 
 ```bash
-git clone https://github.com/neo64yt/dwm-neo64.git
+git clone https://codeberg.org/neo64yt/dwm-pyromorphite
 ```
 
 ### 2. Installing dwm
@@ -65,7 +64,7 @@ sudo make install
 
 #### Autostarting
 
-Autostart applications must be put in `$XDG_CONFIG_HOME/dwm/autostart.sh`. It will be automatically detected by `/usr/local/bin/dwm-session`.
+Autostart applications must be put in `$XDG_CONFIG_HOME/dwm/autostart.sh`. It will automatically be executed by `/usr/local/bin/dwm-session`.
 
 This is a sample of `autostart.sh`:
 
@@ -84,17 +83,15 @@ A desktop entry file for dwm will be automatically installed to `/usr/share/xses
 
 Put `exec /usr/local/bin/dwm-session` into your `.xinitrc` file.
 
-## Customizing dwm
+## Making new customizations
 
-dwm is customized by editing the source code or patching it. To apply a patch, go to this build directory and execute:
+You may want to make customizations on this dwm build to have it as your own. Just like the upstream build of dwm (or any other suckless software), customizations are made by editing the source code (mainly `config.def.h`) and applying patches. For a patching guide, refer to https://dwm.suckless.org/customisation/patches_in_git/ (the recommended method) or if you prefer not to use git, the method to do it (used by many dwm users, including me with this build) is:
 
-``` bash
-patch < /directory/to/patch/file.diff
-# Change the placeholder with a valid file location
+```bash
+patch -p1 < /path/to/patch.diff
 ```
 
-If the patch has failed hunks, manually patch by reading the REJ files in this build directory to guide you.
-Make sure you have ran `cleandir.sh` before recompiling dwm.
+When all the customizations you want to make are done, run the `cleandir.sh` script before reinstalling dwm again just like in the installation guide above.
 
 ## Keybindings
 

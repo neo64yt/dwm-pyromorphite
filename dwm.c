@@ -45,6 +45,7 @@
 #include <Imlib2.h>
 #include <X11/Xlib-xcb.h>
 #include <xcb/res.h>
+#include <X11/XF86keysym.h>
 #ifdef __OpenBSD__
 #include <sys/sysctl.h>
 #include <kvm.h>
