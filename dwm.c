@@ -189,6 +189,11 @@ typedef struct {
 	int monitor;
 } Rule;
 
+typedef struct {
+	const char *variable;
+	const char *value;
+} Env;
+
 typedef struct Systray   Systray;
 struct Systray {
 	Window win;
@@ -258,6 +263,7 @@ static void resizemouse(const Arg *arg);
 static void resizerequest(XEvent *e);
 static void restack(Monitor *m);
 static void run(void);
+static void setupenv(void);
 static void scan(void);
 static int sendevent(Window w, Atom proto, int m, long d0, long d1, long d2, long d3, long d4);
 static void sendmon(Client *c, Monitor *m);
@@ -1961,6 +1967,13 @@ run(void)
 }
 
 void
+setupenv(void)
+{
+    	for (size_t i = 0; i < LENGTH(envs); i++)
+    		setenv(envs[i].variable, envs[i].value, 1);
+}
+
+void
 scan(void)
 {
 	unsigned int i, num;
@@ -3218,6 +3231,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
+    setupenv();
 	run();
 	if(restart) execvp(argv[0], argv);
 	cleanup();

@@ -44,6 +44,12 @@ static const unsigned int ulinepad     = 5;    /* horizontal padding between the
 static const unsigned int ulinestroke  = 2;    /* thickness / height of the underline */
 static const unsigned int ulinevoffset = 1;    /* how far above the bottom of the bar the line should appear */
 
+static const Env envs[] = {
+	/* variable			value */
+	{ "XDG_CURRENT_DESKTOP",	"dwm" },
+};
+
+
 /* Default apps (Please input the window class or the window title of the app, can be determined using xprop) */
 static const char web_browser[] = "Firefox";
 static const char terminal[] = "Alacritty";
