@@ -45,7 +45,7 @@ static const unsigned int ulinestroke  = 2;    /* thickness / height of the unde
 static const unsigned int ulinevoffset = 1;    /* how far above the bottom of the bar the line should appear */
 
 /* Default apps (Please input the window class or the window title of the app, can be determined using xprop) */
-static const char web_browser[] = "firefox";
+static const char web_browser[] = "Firefox";
 static const char terminal[] = "Alacritty";
 static const char img_editor[] = "Gimp";
 static const char nested_x[] = "Xephyr";
