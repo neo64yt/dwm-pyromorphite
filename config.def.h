@@ -112,6 +112,11 @@ static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *run_prompt[] = { "rofi", "-show", "run", NULL };
 static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
 static const char *prefapps[] = { "prefapps", NULL };
+static const char *vol_up[] = { "volumectl", "up", NULL };
+static const char *vol_down[] = { "volumectl", "down", NULL };
+static const char *vol_mute[] = { "volumectl", "mute", NULL };
+static const char *bl_up[] = { "blctl", "up", NULL };
+static const char *bl_down[] = { "blctl", "down", NULL };
 
 /* commands loaded from environment variables */
 /* use the SHCMD macro when setting keybinds for them */
@@ -169,18 +174,23 @@ static Key keys[] = {
 
     /* command keybinds */
     /* direct commands */
-    { MODKEY,                       XK_r,               spawn,          {.v = menucmd } },
-    { MODKEY,                       XK_p,               spawn,          {.v = run_prompt } },
-    { MODKEY,                       XK_e,               spawn,          {.v = emojipick } },
-    { MODKEY|ShiftMask,             XK_r,               spawn,          {.v = prefapps } },
+    { MODKEY,                       XK_r,                     spawn,          {.v = menucmd } },
+    { MODKEY,                       XK_p,                     spawn,          {.v = run_prompt } },
+    { MODKEY,                       XK_e,                     spawn,          {.v = emojipick } },
+    { MODKEY|ShiftMask,             XK_r,                     spawn,          {.v = prefapps } },
+    { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = vol_up } },
+    { 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = vol_down } },
+    { 0,                            XF86XK_AudioMute,         spawn,          {.v = vol_mute } },
+    { 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = bl_up } },
+    { 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = bl_down } },
 
     /* commands loaded from environment variables */
-    { MODKEY|ShiftMask,             XK_Return,          spawn,          SHCMD(TERMCMD) },
-    { MODKEY|ShiftMask,             XK_m,               spawn,          SHCMD(QUICKMENU) },
-    { MODKEY|ShiftMask,             XK_s,               spawn,          SHCMD(SETMGR) },
-    { 0,                            XK_Print,           spawn,          SHCMD(SCRSHOT) },
-    { 0,                            XF86XK_PowerOff,    spawn,          SHCMD(SESSIONMGR) },
-    { MODKEY,                       XK_w,               spawn,          SHCMD(BROWSER) }
+    { MODKEY|ShiftMask,             XK_Return,                spawn,          SHCMD(TERMCMD) },
+    { MODKEY|ShiftMask,             XK_m,                     spawn,          SHCMD(QUICKMENU) },
+    { MODKEY|ShiftMask,             XK_s,                     spawn,          SHCMD(SETMGR) },
+    { 0,                            XK_Print,                 spawn,          SHCMD(SCRSHOT) },
+    { 0,                            XF86XK_PowerOff,          spawn,          SHCMD(SESSIONMGR) },
+    { MODKEY,                       XK_w,                     spawn,          SHCMD(BROWSER) }
 };
 
 /* button definitions */
