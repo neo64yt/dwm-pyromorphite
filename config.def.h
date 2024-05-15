@@ -25,9 +25,9 @@ static const char teal[]        = "#12846e";
 static const char black[]           = "#000000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { white, grey, grey },
+	[SchemeNorm] = { white, black, grey },
 	[SchemeSel]  = { white, teal, teal  },
-	[SchemeStatus]  = { white, teal,  black  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeStatus]  = { white, black,  black  }, // Statusbar right {text,background,not used but cannot be empty}
 	[SchemeTagsSel]  = { teal, grey,  black  }, // Tagbar left selected {text,background,not used but cannot be empty}
 	[SchemeTagsNorm]  = { white, black,  black  }, // Tagbar left unselected {text,background,not used but cannot be empty}
 	[SchemeInfoSel]  = { teal, grey,  black  }, // infobar middle  selected {text,background,not used but cannot be empty}
