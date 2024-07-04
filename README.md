@@ -1,5 +1,7 @@
 # dwm-pyromorphite
 
+## **NOTICE:** Thanks to HiDPI, I might not be using standalone windows managers anymore, especially X11 ones. Therefore, I will not maintain this repository like I used to. However, I may still use this in VMs or on old computers.
+
 dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (based on dwm-6.2) and a part of Pyromorphite Desktop. Since I have used this build without any new customization for at least two years, and I'm also slowly switching to Wayland (via [dwl-pyromorphite](https://codeberg.org/neo64yt/dwl-pyromorphite)), do not ever expect it to have frequent updates and new patches applied (or even be rebased on the latest version of upstream dwm). I only keep this as an X fallback of my personal desktop setup.  
 
 ## Screenshot
