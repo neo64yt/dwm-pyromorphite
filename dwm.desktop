@@ -2,4 +2,4 @@
 Encoding=UTF-8
 Name=Dynamic Window Manager
 Exec=/usr/local/bin/dwm-session
-
+DesktopNames=dwm
