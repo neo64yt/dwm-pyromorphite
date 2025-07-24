@@ -108,7 +108,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *menucmd[] = { "desktopmenu", NULL };
 static const char *run_prompt[] = { "rofi", "-show", "run", NULL };
 static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
 static const char *prefapps[] = { "prefapps", NULL };
