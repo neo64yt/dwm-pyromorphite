@@ -45,7 +45,7 @@ static const unsigned int ulinestroke  = 4;    /* thickness / height of the unde
 static const unsigned int ulinevoffset = 2;    /* how far above the bottom of the bar the line should appear */
 
 static const Env envs[] = {
-	/* variable			value */
+	/* variable			        value */
 	{ "XDG_CURRENT_DESKTOP",	"dwm" },
 };
 
