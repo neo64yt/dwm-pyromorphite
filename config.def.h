@@ -109,9 +109,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *menucmd[] = { "desktopmenu", NULL };
-static const char *run_prompt[] = { "rofi", "-show", "run", NULL };
+static const char *run_prompt[] = { "cmdrun", NULL };
 static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
-static const char *prefapps[] = { "prefapps", NULL };
 static const char *vol_up[] = { "volumectl", "up", NULL };
 static const char *vol_down[] = { "volumectl", "down", NULL };
 static const char *vol_mute[] = { "volumectl", "mute", NULL };
@@ -177,7 +176,6 @@ static Key keys[] = {
     { MODKEY,                       XK_r,                     spawn,          {.v = menucmd } },
     { MODKEY,                       XK_p,                     spawn,          {.v = run_prompt } },
     { MODKEY,                       XK_e,                     spawn,          {.v = emojipick } },
-    { MODKEY|ShiftMask,             XK_r,                     spawn,          {.v = prefapps } },
     { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = vol_up } },
     { 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = vol_down } },
     { 0,                            XF86XK_AudioMute,         spawn,          {.v = vol_mute } },
