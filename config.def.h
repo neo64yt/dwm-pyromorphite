@@ -51,7 +51,7 @@ static const Env envs[] = {
 
 
 /* Default apps (Please input the window class or the window title of the app, can be determined using xprop) */
-static const char web_browser[] = "Firefox";
+static const char web_browser[] = "floorp";
 static const char terminal[] = "org.wezfurlong.wezterm";
 static const char img_editor[] = "Gimp";
 static const char nested_x[] = "Xephyr";
