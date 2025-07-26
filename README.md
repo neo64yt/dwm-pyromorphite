@@ -9,7 +9,7 @@ My dwm build is adapted to be used with the screen DPI set to 192. To you use it
 
 ## Screenshot
 
-![screenshot](dwm.png)
+![Screenshot as of 2025-07-27](dwm.png)
 
 ## Patches used in this build
 
