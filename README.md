@@ -3,6 +3,8 @@
 ## ~**NOTICE:** Thanks to HiDPI, I might not be using standalone windows managers anymore, especially X11 ones. Therefore, I will not maintain this repository like I used to. However, I may still use this in VMs or on old computers.~
 ## **UPDATE:** I figured it out. WE ARE SO BACK.
 
+![Recoloured dwm logo](dwm-pyromorphite.png)
+
 dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (currently based on dwm-6.2) and a part of Pyromorphite Desktop. Since I have used this build without any new customization for at least two years and I'm quite comfortable with it, do not ever expect it to have frequent updates and new patches applied. I may keep it up to date to the latest upstream version when I feel the need to though.  
 
 My dwm build is adapted to be used with the screen DPI set to 192. To you use it at 96 DPI, you may want to set everything related to the appearance of the bar and border (except for the font size) to half of their original set values.    
