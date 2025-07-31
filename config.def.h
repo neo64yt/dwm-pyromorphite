@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 6;        /* border pixel of windows */
 static const unsigned int snap      = 64;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13" };
 static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
 static const char gray[]            = "#272a34";
@@ -19,8 +19,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = { "1", "2", "3", "4", "5", "6" };
-static char *tagsalt[] = { "1", "2", "3", "4", "5", "6" };
+static char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", " 󰠔 " };
+static char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const unsigned int ulinepad	     = 10;	/* horizontal padding between the underline and tag */
@@ -45,18 +45,20 @@ static const int resizehints    = 1;    /* 1 means respect size hints in tiled r
 static const int decorhints     = 1;    /* 1 means respect decoration hints */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
+#include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
+	{ "󰙀",      tile },    /* first entry is default */
+	{ "󱂬",      NULL },    /* no layout function means floating behavior */
+	{ "󰼬",      monocle },
+    { "󰝘",      gaplessgrid },
+	{ "󱒅",      centeredmaster },
+	{ "󱒆",      centeredfloatingmaster },
 };
 
 static const Env envs[] = {
-	/* variable 	value */
-	{ "TERMINAL",	"st" },
+	/* variable 	            value */
+	{ "XDG_CURRENT_DESKTOP",	"dwm" },
 };
 
 /* key definitions */
