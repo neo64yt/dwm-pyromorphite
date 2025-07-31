@@ -10,27 +10,28 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 
 ## Patches used in this build
 
-* actualfullscreen
-* alternativetags
-* alwayscenter
-* aspectresize
-* attachaside
+* actualfullscreen (a1ef02f9dedf91fdc41b873594b46d5965e4bf4f)
+* alternativetags (97115d2ab782bd62004cb912dfdc1ec528ee5bc2)
+* alwayscenter (71a8d47cbc283ba9140d11f9070a1b5c7de53cd7)
+* aspectresize (a455a5a73b31aa9e5e2f7e8b00600b6c13019dc4)
+* attachaside (38898c9fe0eb02f978ec98df728fc53dc4ed8328)
 * awesomebar 
-* bar height
-* centeredmaster
-* clientindicatorshidevacant (modified)
-* decorhints
-* ewmhtags
-* fixborders
-* gaplessgrid
-* nodmenu
-* restartsig
-* savefloats
-* steam
-* swallow
+* bar height (97d04c08fe63d3b743e442818042047b2e1b058d)
+* centeredmaster (d568d93a94370023bb038ebf49045f975deed534)
+* clientindicatorshidevacant (modified) (80d3af4d9a494338ef592c7212c586e07554758a & 3bd0e36d409f4a2aa2b37e3449948555e222d94e)
+* decorhints (773f331eb8204e61d90a793a8d50b393a9873ff9)
+* ewmhtags (fb9f9acfd47f5634f88e2c10532bf7ca3f682db7)
+* fixborders (c4ede6631654bc3f6c660b84d765ccfbfac68dec)
+* gaplessgrid (f80ec85e3e391f51258e2e9b8db79eca079753b4)
+* nodmenu (9023f4a855fe08fb08f99f7716ba478f9c935b99)
+* restartsig (4541e9fc7b430d6feff1c9eeeee86f1a7f139e3d)
+* savefloats (18b65cb79afbefedd308e1a68f4fa4292065eaca)
+* setenvvars (f8cc12a9da323a4aa693cd6410bf2ad675d793b7)
+* steam (7008d414615b42e4e67018422e0ed89b7ac71c61)
+* swallow (804ee0033a1c7f11826e4982f1567931378c98f9)
 * systray
-* underlinetags (modified)
-* urgentborder
+* underlinetags (modified) (6fb931c92e7f0ec8525c988c2a5ed4f9b36505f4)
+* urgentborder (ea95c96edb18346a565db885b63e341c0d6ba6af)
 * winicon
 
 ## Dependencies
