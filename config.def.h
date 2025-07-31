@@ -10,10 +10,12 @@ static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
 static const char gray[]            = "#272a34";
 static const char teal[]            = "#12846e";
+static const char red[]             = "#ff0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { white,     black,     gray },
 	[SchemeSel]  = { teal,      gray,      teal  },
+	[SchemeUrg]  = { white,     red,       red  },
 };
 
 /* tagging */
