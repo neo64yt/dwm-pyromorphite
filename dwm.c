@@ -800,7 +800,7 @@ drawbar(Monitor *m)
 
 		for (c = m->clients; c; c = c->next) {
 			if (c->tags & (1 << i)) {
-				drw_rect(drw, x, 1 + (indn * 2), selmon->sel == c ? 6 : 1, 1, 1, urg & 1 << i);
+				drw_rect(drw, x, (1 + (indn * 2)) * indicatorscale, (selmon->sel == c ? 6 : 1) * indicatorscale, 1 * indicatorscale, 1, urg & 1 << i);
 				indn++;
 			}
 		}

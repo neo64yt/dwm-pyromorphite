@@ -21,9 +21,10 @@ static char *tags[] = { "1", "2", "3", "4", "5", "6" };
 static char *tagsalt[] = { "1", "2", "3", "4", "5", "6" };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
-static const unsigned int ulinepad	    = 10;	/* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke	= 4;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 2;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinepad	     = 10;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	 = 4;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	 = 2;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int indicatorscale = 2;   /* scaling of client indicator */
 
 static const Rule rules[] = {
 	/* xprop(1):
