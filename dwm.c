@@ -99,6 +99,11 @@ struct Client {
 };
 
 typedef struct {
+	const char *variable;
+	const char *value;
+} Env;
+
+typedef struct {
 	unsigned int mod;
 	KeySym keysym;
 	void (*func)(const Arg *);
@@ -197,6 +202,7 @@ static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
+static void setenvvars(void);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
@@ -1466,6 +1472,13 @@ sendevent(Client *c, Atom proto)
 	return exists;
 }
 
+static void
+setenvvars(void)
+{
+	for (size_t i = 0; i < LENGTH(envs); i++)
+		setenv(envs[i].variable, envs[i].value, 1);
+}
+
 void
 setfocus(Client *c)
 {
@@ -2151,6 +2164,7 @@ main(int argc, char *argv[])
 	if (!(dpy = XOpenDisplay(NULL)))
 		die("dwm: cannot open display");
 	checkotherwm();
+	setenvvars();
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)
