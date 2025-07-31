@@ -52,6 +52,11 @@ static const Layout layouts[] = {
 	{ ">M>",      centeredfloatingmaster },
 };
 
+static const Env envs[] = {
+	/* variable 	value */
+	{ "TERMINAL",	"st" },
+};
+
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
