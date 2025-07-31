@@ -6,6 +6,7 @@ static const unsigned int snap      = 64;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13" };
 static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
