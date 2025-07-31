@@ -20,18 +20,15 @@ My dwm build is adapted to be used with the screen DPI set to 192. To you use it
 * alwayscenter
 * aspectresize
 * attachaside
-* awesomebar (2020-09-07 version)
+* awesomebar 
 * bar height
 * centeredmaster
 * clientindicatorshidevacanttags
-* colorbar
 * decorhints
 * ewmhtags
 * fixborders
 * gaplessgrid
-* monoclesymbol
 * nodmenu
-* resizecorners
 * restartsig
 * systray
 * swallow
