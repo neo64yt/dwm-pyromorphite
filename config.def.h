@@ -1,6 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#define ICONSIZE 16   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
+
 static const unsigned int borderpx  = 6;        /* border pixel of windows */
 static const unsigned int snap      = 64;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
