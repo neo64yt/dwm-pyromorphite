@@ -1,21 +1,21 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-#define ICONSIZE 16   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSIZE 30   /* icon size */
+#define ICONSPACING 10 /* space between icon and title */
 
-static const unsigned int borderpx  = 6;        /* border pixel of windows */
-static const unsigned int snap      = 64;       /* snap pixel */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static const unsigned int borderpx       = 6;        /* border pixel of windows */
+static const unsigned int snap           = 64;       /* snap pixel */
+static const int swallowfloating         = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayonleft  = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13" };
+static const int user_bh            = 50;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13", "Noto Color Emoji:pixelsize=28" };
 static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
 static const char gray[]            = "#272a34";
@@ -32,7 +32,7 @@ static const char *colors[][3]      = {
 /* tagging */
 static char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", " 󰠔 " };
 static char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
-static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
+static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held down*/
 
 static const unsigned int ulinepad	     = 10;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	 = 4;	/* thickness / height of the underline */
@@ -45,10 +45,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "floorp",     NULL,     NULL,           1 << 3,    0,          0,           1,        -1 },
+	{ "Yad",	    NULL,     NULL,           0,         1,		     0,	          1,        -1 },
+	{ "zenity",	    NULL,     NULL,           0,         1,		     0,	          1,        -1 },
+    { "scrcpy",	    NULL,	  NULL,           0,         0,          0,           1,        -1 },
+    { "KeePassXC",  NULL,     NULL,           0,         1,          0,           1,        -1 },
+	{ NULL,         NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -87,12 +89,26 @@ static const Env envs[] = {
 
 /* commands */
 static const char *menucmd[] = { "desktopmenu", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *run_prompt[] = { "cmdrun", NULL };
+static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
+static const char *vol_up[] = { "volumectl", "up", NULL };
+static const char *vol_down[] = { "volumectl", "down", NULL };
+static const char *vol_mute[] = { "volumectl", "mute", NULL };
+static const char *bl_up[] = { "blctl", "up", NULL };
+static const char *bl_down[] = { "blctl", "down", NULL };
+
+/* commands loaded from environment variables */
+/* use the SHCMD macro when setting keybinds for them */
+#define TERMCMD "$TERMINAL"
+#define QUICKMENU "$QUICKMENU"
+#define SETMGR "$SETTINGS_MGR"
+#define SCRSHOT "$SCREENSHOOTER"
+#define SESSIONMGR "$SESSION_MGR"
+#define BROWSER "$BROWSER"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = menucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+    /* dwm-related keybinds  */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
@@ -104,14 +120,15 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_j,      aspectresize,   {.i = +24} },
-	{ MODKEY|ShiftMask,             XK_k,      aspectresize,   {.i = -24} },
+	{ MODKEY|ShiftMask,             XK_h,      aspectresize,   {.i = +24} },
+	{ MODKEY|ShiftMask,             XK_l,      aspectresize,   {.i = -24} },
 	{ MODKEY|ShiftMask,             XK_x,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -123,7 +140,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_a,      togglealttag,   {0} },
 	{ MODKEY,                       XK_s,      show,           {0} },
-	{ MODKEY|ShiftMask,             XK_s,      showall,        {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_s,      showall,        {0} },
 	{ MODKEY,                       XK_x,      hide,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -132,7 +149,26 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+
+    /* command keybinds */
+    /* direct commands */
+    { MODKEY,                       XK_r,                     spawn,          {.v = menucmd } },
+    { MODKEY,                       XK_p,                     spawn,          {.v = run_prompt } },
+    { MODKEY,                       XK_e,                     spawn,          {.v = emojipick } },
+    { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = vol_up } },
+    { 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = vol_down } },
+    { 0,                            XF86XK_AudioMute,         spawn,          {.v = vol_mute } },
+    { 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = bl_up } },
+    { 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = bl_down } },
+
+    /* commands loaded from environment variables */
+    { MODKEY|ShiftMask,             XK_Return,                spawn,          SHCMD(TERMCMD) },
+    { MODKEY|ShiftMask,             XK_m,                     spawn,          SHCMD(QUICKMENU) },
+    { MODKEY|ShiftMask,             XK_s,                     spawn,          SHCMD(SETMGR) },
+    { 0,                            XK_Print,                 spawn,          SHCMD(SCRSHOT) },
+    { 0,                            XF86XK_PowerOff,          spawn,          SHCMD(SESSIONMGR) },
+    { MODKEY,                       XK_w,                     spawn,          SHCMD(BROWSER) }
 };
 
 /* button definitions */

@@ -1304,7 +1304,6 @@ geticonprop(Window win, unsigned int *picw, unsigned int *pich)
 	XFree(p);
 
 	return ret;
->>>>>>> winicon
 }
 
 int
