@@ -15,7 +15,7 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 * alwayscenter (71a8d47cbc283ba9140d11f9070a1b5c7de53cd7)
 * aspectresize (a455a5a73b31aa9e5e2f7e8b00600b6c13019dc4)
 * attachaside (38898c9fe0eb02f978ec98df728fc53dc4ed8328)
-* awesomebar 
+* awesomebar (668ef6b48b041767eba686326f6a26d09b95ab0b) 
 * bar height (97d04c08fe63d3b743e442818042047b2e1b058d)
 * centeredmaster (d568d93a94370023bb038ebf49045f975deed534)
 * clientindicatorshidevacant (modified) (80d3af4d9a494338ef592c7212c586e07554758a & 3bd0e36d409f4a2aa2b37e3449948555e222d94e)
@@ -29,10 +29,10 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 * setenvvars (f8cc12a9da323a4aa693cd6410bf2ad675d793b7)
 * steam (7008d414615b42e4e67018422e0ed89b7ac71c61)
 * swallow (804ee0033a1c7f11826e4982f1567931378c98f9)
-* systray
+* systray (83764e710376532d771501a84dc0eb8096e9cc45)
 * underlinetags (modified) (6fb931c92e7f0ec8525c988c2a5ed4f9b36505f4)
 * urgentborder (ea95c96edb18346a565db885b63e341c0d6ba6af)
-* winicon
+* winicon (2815ce38c5e8ed13f8200851992bc10c4dfe3dfa)
 
 ## Dependencies
 
