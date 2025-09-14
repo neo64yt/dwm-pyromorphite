@@ -44,13 +44,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "floorp",     NULL,     NULL,           1 << 3,    0,          0,           1,        -1 },
-	{ "Yad",	    NULL,     NULL,           0,         1,		     0,	          1,        -1 },
-	{ "zenity",	    NULL,     NULL,           0,         1,		     0,	          1,        -1 },
-    { "scrcpy",	    NULL,	  NULL,           0,         0,          0,           1,        -1 },
-    { "KeePassXC",  NULL,     NULL,           0,         1,          0,           1,        -1 },
-	{ NULL,         NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class                    instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "floorp",                 NULL,     NULL,           1 << 3,    0,          0,           1,        -1 },
+	{ "Yad",	                NULL,     NULL,           0,         1,		     0,	          1,        -1 },
+	{ "zenity",	                NULL,     NULL,           0,         1,		     0,	          1,        -1 },
+    { "scrcpy",	                NULL,	  NULL,           0,         0,          0,           1,        -1 },
+    { "KeePassXC",              NULL,     NULL,           0,         1,          0,           1,        -1 },
+    { "lxqt-openssh-askpass",   NULL,     NULL,           0,         1,          0,           1,        -1 },
+    { "ssh-askpass",            NULL,     NULL,           0,         1,          0,           1,        -1 },
+	{ NULL,                     NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -90,7 +92,7 @@ static const Env envs[] = {
 /* commands */
 static const char *menucmd[] = { "desktopmenu", NULL };
 static const char *run_prompt[] = { "cmdrun", NULL };
-static const char *emojipick[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
+static const char *emojipick[] = { "emojisel", NULL };
 static const char *vol_up[] = { "volumectl", "up", NULL };
 static const char *vol_down[] = { "volumectl", "down", NULL };
 static const char *vol_mute[] = { "volumectl", "mute", NULL };
