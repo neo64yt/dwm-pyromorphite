@@ -6,7 +6,6 @@
 
 static const unsigned int borderpx       = 6;        /* border pixel of windows */
 static const unsigned int snap           = 64;       /* snap pixel */
-static const int swallowfloating         = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -44,15 +43,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                    instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "floorp",                 NULL,     NULL,           1 << 3,    0,          0,           1,        -1 },
-	{ "Yad",	                NULL,     NULL,           0,         1,		     0,	          1,        -1 },
-	{ "zenity",	                NULL,     NULL,           0,         1,		     0,	          1,        -1 },
-    { "scrcpy",	                NULL,	  NULL,           0,         0,          0,           1,        -1 },
-    { "KeePassXC",              NULL,     NULL,           0,         1,          0,           1,        -1 },
-    { "lxqt-openssh-askpass",   NULL,     NULL,           0,         1,          0,           1,        -1 },
-    { "ssh-askpass",            NULL,     NULL,           0,         1,          0,           1,        -1 },
-	{ NULL,                     NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class                    instance  title           tags mask  isfloating  monitor */
+	{ "floorp",                 NULL,     NULL,           1 << 3,    0,          -1 },
+	{ "Yad",	                NULL,     NULL,           0,         1,		     -1 },
+	{ "zenity",	                NULL,     NULL,           0,         1,		     -1 },
+    { "scrcpy",	                NULL,	  NULL,           0,         0,          -1 },
+    { "KeePassXC",              NULL,     NULL,           0,         1,          -1 },
+    { "lxqt-openssh-askpass",   NULL,     NULL,           0,         1,          -1 },
+    { "ssh-askpass",            NULL,     NULL,           0,         1,          -1 },
 };
 
 /* layout(s) */

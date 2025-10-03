@@ -28,7 +28,7 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 * savefloats (18b65cb79afbefedd308e1a68f4fa4292065eaca)
 * setenvvars (f8cc12a9da323a4aa693cd6410bf2ad675d793b7)
 * steam (7008d414615b42e4e67018422e0ed89b7ac71c61)
-* swallow (804ee0033a1c7f11826e4982f1567931378c98f9)
+* ~swallow (804ee0033a1c7f11826e4982f1567931378c98f9)~ (Use [devour](https://github.com/salman-abedin/devour) instead)
 * systray (83764e710376532d771501a84dc0eb8096e9cc45)
 * underlinetags (modified) (6fb931c92e7f0ec8525c988c2a5ed4f9b36505f4)
 * urgentborder (ea95c96edb18346a565db885b63e341c0d6ba6af)
@@ -37,8 +37,6 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 ## Dependencies
 
 * Xlib
-* libxcb
-* xcb-res
 * Imlib2
 * libxft
 * libxinerama
