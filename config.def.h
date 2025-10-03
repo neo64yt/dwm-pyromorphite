@@ -15,7 +15,7 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 50;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13", "Noto Color Emoji:pixelsize=28" };
+static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13", "Twemoji:pixelsize=28" };
 static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
 static const char gray[]            = "#272a34";
