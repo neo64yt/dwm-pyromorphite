@@ -58,6 +58,7 @@ static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int decorhints     = 1;    /* 1 means respect decoration hints */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 
 #include "gaplessgrid.c"
 static const Layout layouts[] = {
@@ -104,6 +105,12 @@ static const char *bl_down[] = { "blctl", "down", NULL };
 #define SCRSHOT "$SCREENSHOOTER"
 #define SESSIONMGR "$SESSION_MGR"
 #define BROWSER "$BROWSER"
+
+/* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
+static const StatusCmd statuscmds[] = {
+	{ "notify-send Mouse$BUTTON", 1 },
+};
+static const char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -178,6 +185,9 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button3,        spawn,          {.v = statuscmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
