@@ -13,7 +13,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 50;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "JetBrains Mono:size=11", "Material Design Icons:size=13", "Twemoji:pixelsize=28" };
+static const char font[]            = "sans-serif 11";
 static const char white[]           = "#ffffff";
 static const char black[]           = "#000000";
 static const char gray[]            = "#272a34";
@@ -28,8 +28,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = { " 󰋜 ", " 󰺶 ", " 󰆍 ", " 󰆌 "," 󰐋 ", " 󰠔 " };
-static char *tagsalt[] = { " 󰎦 ", " 󰎩 ", " 󰎬 ", " 󰎮 ", " 󰎰 ", " 󰎵 " };
+static char *tags[] = { "󰋜", "󰺶", "󰆍", "󰆌","󰐋", "󰠔" };
+static char *tagsalt[] = { "󰎦", "󰎩", "󰎬", "󰎮", "󰎰", "󰎵" };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held down*/
 
 static const unsigned int ulinepad	     = 10;	/* horizontal padding between the underline and tag */
