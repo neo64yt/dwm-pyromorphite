@@ -24,6 +24,7 @@ dwm-pyromorphite (formerly dwm-neo64) is a heavily customized build of dwm (curr
 * fixborders (c4ede6631654bc3f6c660b84d765ccfbfac68dec)
 * gaplessgrid (f80ec85e3e391f51258e2e9b8db79eca079753b4)
 * nodmenu (9023f4a855fe08fb08f99f7716ba478f9c935b99)
+* pango (00978a7385fabd8752aac0cd6a5d60db9592d2fc)
 * restartsig (4541e9fc7b430d6feff1c9eeeee86f1a7f139e3d)
 * savefloats (18b65cb79afbefedd308e1a68f4fa4292065eaca)
 * setenvvars (f8cc12a9da323a4aa693cd6410bf2ad675d793b7)
