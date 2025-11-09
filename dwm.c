@@ -561,7 +561,7 @@ buttonpress(XEvent *e)
 				if ((unsigned char)(*s) < ' ') {
 					ch = *s;
 					*s = '\0';
-					x += TEXTW(text) - lrpad;
+					x += TEXTWM(text) - lrpad;
 					*s = ch;
 					text = s + 1;
 					if (x >= ev->x)

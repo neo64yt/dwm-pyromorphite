@@ -108,7 +108,11 @@ static const char *bl_down[] = { "blctl", "down", NULL };
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 static const StatusCmd statuscmds[] = {
-	{ "eww open tray --toggle", 1 },
+    { "volumectl mute", 1 },
+    { "false", 2 },
+    { "$TERMINAL -e btop", 3 },
+    { "$TERMINAL -e calcurse", 4 },
+	{ "eww open tray --toggle", 9 },
 };
 static const char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 
